@@ -1,0 +1,23 @@
+main{
+    background-color: #8FC9F2;
+}
+
+button{
+    border-radius: 20px;
+    background-color: #5A6FE9;
+    outline: none;
+}
+
+a{
+    color: #5A6FE9;
+    text-decoration: none;
+}
+
+input{
+    width: 80%; 
+    margin: 0 auto;
+}
+
+label{
+    margin-left: 10%;
+}
