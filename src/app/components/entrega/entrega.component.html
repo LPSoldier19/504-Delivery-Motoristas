@@ -1,2 +1,42 @@
 <app-navbar></app-navbar>
+
+<main class="container mt-4">
+    <google-map width="340px" height="340px" [center]="{lat: latitude, lng: longitude}">
+        <map-marker [title]="title" [position]="{lat: latitude, lng: longitude}"></map-marker>
+    </google-map>
+
+    <div class="card my-3">
+        <div class="card-body">
+          <h5 class="card-title">Rafael Bautista</h5>
+          <h6 class="card-subtitle mb-3 text-muted">Col. La Esperanza, Tegucigalpa</h6>
+          <h6 class="card-subtitle mb-3 text-muted">Teléfono: 9520-2808</h6>
+          <h5 class="card-subtitle mb-2">Burger King</h5>
+          <p class="card-text">Combo Whopper con Coca-Cola</p>
+          <h6 class="card-subtitle mb-2 text-muted">Monto del Pedido: L. 145.00</h6>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row" id="botones-entregas" style="margin-bottom: 100px;">
+            <div class="col-2">
+                <button class="btn btn-link rounded-circle"><fa-icon [icon]="faCheckCircle"></fa-icon></button>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-link rounded-circle"><fa-icon [icon]="faUtensils"></fa-icon></button>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-link rounded-circle"><fa-icon [icon]="faMotorcicle"></fa-icon></button>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-link rounded-circle"><fa-icon [icon]="faClipboardCheck"></fa-icon></button>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-link rounded-circle"><fa-icon [icon]="faBan"></fa-icon></button>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
 <app-footbar></app-footbar>

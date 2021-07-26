@@ -13,6 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { EntregaComponent } from './components/entrega/entrega.component';
+import {GoogleMapsModule} from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { EntregaComponent } from './components/entrega/entrega.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
