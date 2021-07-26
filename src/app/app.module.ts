@@ -10,6 +10,9 @@ import { FootbarComponent } from './components/footbar/footbar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { PedidosComponent } from './components/pedidos/pedidos.component';
+import { EntregaComponent } from './components/entrega/entrega.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SignupComponent,
     MainComponent,
     FootbarComponent,
-    NavbarComponent
+    NavbarComponent,
+    PerfilComponent,
+    PedidosComponent,
+    EntregaComponent
   ],
   imports: [
     BrowserModule,

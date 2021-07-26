@@ -1,0 +1,17 @@
+footer{
+    color: white;
+    font-size: 1.9rem;
+}
+
+#footbar div{
+    border: 1px solid rgb(190, 190, 190);
+}
+
+#footbar a{
+    color: white;
+    text-decoration: none;
+}
+
+#footbar{
+    background-color: #5A6FE9;
+}
