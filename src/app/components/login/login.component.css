@@ -1,0 +1,15 @@
+main{
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(90,111,233,1) 100%, rgba(0,212,255,1) 100%);
+}
+
+button{
+    border-radius: 20px;
+    background-color: #5A6FE9;
+    outline: none;
+}
+
+a{
+    color: #5A6FE9;
+    text-decoration: none;
+}
