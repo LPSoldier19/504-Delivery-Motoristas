@@ -5,3 +5,7 @@ fa-icon{
 #botones-entregas{
     margin: 0 auto;
 }
+
+.map-container{
+    height: 350px;
+}

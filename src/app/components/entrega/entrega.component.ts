@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LocationService } from '../../services/location.service';
 import {faUtensils, faCheckCircle, faBan, faMotorcycle, faClipboardCheck} from '@fortawesome/free-solid-svg-icons';
+import { Loader } from '@googlemaps/js-api-loader';
  
 @Component({
   selector: 'app-entrega',
@@ -16,33 +16,64 @@ export class EntregaComponent implements OnInit {
   faMotorcicle = faMotorcycle;
   faClipboardCheck = faClipboardCheck
 
-  title = 'geolocation';
-  latitude: any;
-  longitude: any;
+  lat:number = 0;
+  lng:number = 0;
 
-  // label = {
-  //   color: 'red',
-  //   text: 'Marcador'
+  
+  getClientLocation(){
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(position=>{
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude
+        console.log(this.lat);
+        console.log(this.lng);
+      })
+    }
+  }
+
+  private map!: google.maps.Map;
+
+  // constructor(public locationService: LocationService) {
+
   // }
 
-  constructor(public locationService: LocationService) {
-
-  }
-
   ngOnInit(): void {
-    let location = this.getLocation();
+    let loader = new Loader({
+      apiKey: 'AIzaSyBtnSxMdTk70gFZB7XE1KAMK7Pd4je5HlU'
+    })
+
+    this.getClientLocation();
+
+    loader.load().then(() => {
+
+      var location = { lat: this.lat, lng: this.lng }
+
+      this.map = new google.maps.Map(document.getElementById("map")!, {
+        center: location,
+        zoom: 15,
+        gestureHandling: "greedy"
+      })
+
+      const marker = new google.maps.Marker({
+        position: location,
+        map: this.map,
+        title: `${location}`
+      });
+    })
   }
 
-  getLocation() {
-    this.locationService.getPosition().then(pos => {
-      this.latitude = pos.lat;
-      this.longitude = pos.lng;
-    });
+  enRestaurante(){
+    alert('Motorista en el restaurante');
   }
 
-  // position = {
-  //   latitudeApp: this.latitude,
-  //   longitudeApp: this.longitude
-  // };
+  enCamino(){
+    
+  }
+  pedidoEntregado(){
+    
+  }
+  pedidoCancelado(){
+    
+  }
 
 }
