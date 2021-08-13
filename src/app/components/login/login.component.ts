@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { MotoristasService } from '../../services/motoristas.service';
 
 @Component({
   selector: 'app-login',
@@ -15,18 +15,26 @@ export class LoginComponent implements OnInit {
 
   motorista={correo:this.correo,password:this.password};
 
-  constructor(private title:Title, private authService: AuthService, private router: Router) { }
+  constructor(private title:Title, private motoristaService: MotoristasService, private router: Router) { }
 
   ngOnInit(): void {
     this.title.setTitle('504 Delivery - Login');
   }
 
   iniciarSesion(){
-     this.authService.login(this.motorista).subscribe(
+     this.motoristaService.login(this.motorista).subscribe(
        res=>{
-         localStorage.setItem('token', res.token);
-         localStorage.setItem('userID', res.userID);
-         this.router.navigate(['/home']);
+         if(res.userStatus === "Pendiente"){
+           alert('Su solicitud aun esta pendiente de respuesta')
+         }
+         else if(res.userStatus === "Denegado"){
+            alert('Su solicitud ha sido denegada por el administrador');
+         }
+         else{
+            localStorage.setItem('token', res.token);
+            localStorage.setItem('userID', res.userID);
+            this.router.navigate(['/home']);
+         }
        },
        error=>{
          console.log(error);

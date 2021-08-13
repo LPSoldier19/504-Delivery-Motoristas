@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class MotoristasService {
 
   private URLMotoristas = "http://localhost:8888/motoristas";
 
@@ -13,6 +13,10 @@ export class AuthService {
 
   login(motorista:any){
     return this.http.post<any>(this.URLMotoristas+'/login', motorista);
+  }
+
+  registrar(motorista:any){
+    return this.http.post(`${this.URLMotoristas}/signup`, motorista);
   }
 
   loggedIn():Boolean{
