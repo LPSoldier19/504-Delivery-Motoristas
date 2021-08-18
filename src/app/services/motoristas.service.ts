@@ -34,6 +34,7 @@ export class MotoristasService {
 
   logOut(){
     localStorage.removeItem('token');
+    localStorage.removeItem('userID');
     this.router.navigate(['']);
   }
 }

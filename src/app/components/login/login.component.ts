@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
          if(res.userStatus === "Pendiente"){
            alert('Su solicitud aun esta pendiente de respuesta')
          }
-         else if(res.userStatus === "Denegado"){
+         else if(res.userStatus === "Rechazado"){
             alert('Su solicitud ha sido denegada por el administrador');
          }
          else{
