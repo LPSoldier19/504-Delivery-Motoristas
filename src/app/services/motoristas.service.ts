@@ -28,6 +28,10 @@ export class MotoristasService {
     }
   }
 
+  informacionMotorista(motorista:any){
+    return this.http.get(`${this.URLMotoristas}/${motorista}`, {});
+  }
+
   getToken(){
     return localStorage.getItem('token');
   }

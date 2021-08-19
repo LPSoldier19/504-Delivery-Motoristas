@@ -1,31 +1,30 @@
 <app-navbar></app-navbar>
 
-<main class="container mt-4">
+<main class="container mt-4" [ngClass]="{'d-none': !idPedido}">
     <div id="map" class="map-container">
 
     </div>
 
     <div class="card my-3">
         <div class="card-body">
-          <h5 class="card-title">Rafael Bautista</h5>
-          <h6 class="card-subtitle mb-3 text-muted">Col. La Esperanza, Tegucigalpa</h6>
-          <h6 class="card-subtitle mb-3 text-muted">Teléfono: 9520-2808</h6>
-          <h5 class="card-subtitle mb-2">Burger King</h5>
-          <p class="card-text">Combo Whopper con Coca-Cola</p>
-          <h6 class="card-subtitle mb-2 text-muted">Monto del Pedido: L. 145.00</h6>
+          <h5 class="card-title">{{cliente.nombreCliente}}</h5>
+          <h6 class="card-subtitle mb-3 text-muted">Teléfono: {{cliente.telefono}}</h6>
+          <h5 class="card-subtitle mb-2">{{producto.nombreRestaurante}}</h5>
+          <h5 class="card-text">{{producto.nombreProducto}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Monto del Pedido: L. {{pedido.monto}}.00</h6>
         </div>
     </div>
 
     <div class="container">
         <div class="row" id="botones-entregas" style="margin-bottom: 100px;">
             <div class="col-2">
-                <button class="btn btn-link rounded-circle" disabled><fa-icon [icon]="faCheckCircle"></fa-icon></button>
+                <button class="btn btn-link rounded-circle disabled"><fa-icon [icon]="faCheckCircle"></fa-icon></button>
             </div>
             <div class="col-2">
-                <button class="btn btn-link rounded-circle" (click)="enRestaurante()"><fa-icon [icon]="faUtensils"></fa-icon></button>
+                <button class="btn btn-link rounded-circle" [ngClass]="{'disabled': pedido.estado === 'En el Restaurante' || pedido.estado === 'En camino a su hogar'}" (click)="enRestaurante()"><fa-icon [icon]="faUtensils"></fa-icon></button>
             </div>
             <div class="col-2">
-                <button class="btn btn-link rounded-circle" (click)="enCamino()"><fa-icon [icon]="faMotorcicle"></fa-icon></button>
+                <button class="btn btn-link rounded-circle" [ngClass]="{'disabled': pedido.estado === 'En camino a su hogar'}" (click)="enCamino()"><fa-icon [icon]="faMotorcicle"></fa-icon></button>
             </div>
             <div class="col-2">
                 <button class="btn btn-link rounded-circle" (click)="pedidoEntregado()"><fa-icon [icon]="faClipboardCheck"></fa-icon></button>
@@ -36,6 +35,12 @@
         </div>
     </div>
 
+</main>
+
+<main [ngClass]="{'d-none': idPedido}">
+    <div class="container text-center">
+        <h4 style="margin-top: 50%;">Para poder visualizar la página, elegir un pedido a entregar</h4>
+    </div>
 </main>
 
 

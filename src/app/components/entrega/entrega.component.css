@@ -8,4 +8,5 @@ fa-icon{
 
 .map-container{
     height: 350px;
+    min-height: 349px;
 }

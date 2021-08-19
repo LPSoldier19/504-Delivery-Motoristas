@@ -1,1 +1,27 @@
+<main class="container my-3 py-2" style="min-height: 110vh;">
+    <div class="card mt-1">
+        <div class="text-center mt-4">
+            <img src="../../../assets/images/logos/user-profile.png" class="img-fluid" style="width: 50%; height: auto;">
+            <h4 class="my-3">{{motoristaActual.nombre}} {{motoristaActual.apellido}}</h4>
+        </div>
+        <div class="card-body" style="margin-top: 30px;">
+            <div class="profile-list-item">
+                <h6>Teléfono: {{motoristaActual.telefono}}</h6>
+            </div>
+            <div class="profile-list-item">
+              <h6>Correo: {{motoristaActual.correo}}</h6>
+            </div>
+            <div class="profile-list-item">
+                <h6>Identidad: {{motoristaActual.identidad}}</h6>
+            </div>
+            <div class="profile-list-item">
+                <h6>30 Pedidos Realizados</h6>
+            </div>
+            <div class="text-center mt-3">
+              <button class="btn btn-primary btn-lg" (click)="motoristasService.logOut()">Cerrar Sesion</button>
+            </div>
+        </div>
+    </div>
+</main>
+
 <app-footbar></app-footbar>

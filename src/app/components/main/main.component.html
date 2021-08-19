@@ -1,17 +1,25 @@
 <app-navbar></app-navbar>
 
-<main class="container">
-    <div class="card my-3 pt-3">
+<main class="container" style="min-height: 100vh;">
+    <div class="card my-2 pt-3" *ngFor="let pedido of pedidosSinMotoristas">
         <div class="card-body">
-          <h5 class="card-title">Rafael Bautista</h5>
-          <h6 class="card-subtitle mb-3 text-muted">Col. La Esperanza, Tegucigalpa</h6>
-          <h5 class="card-subtitle mb-2">Burger King</h5>
-          <p class="card-text">Combo Whopper con Coca-Cola</p>
-          <h6 class="card-subtitle mb-2 text-muted">Monto: L. 145.00</h6>
-          <a href="#" class="card-link">Entregar Pedido</a>
+          <div class="row no-gutters">
+            <div class="col-5 align-self-center">
+              <img src="../../../assets/images/{{pedido.producto.imagenProducto}}" class="img-fluid px-2" alt="">
+          </div>
+            <div class="col-7">
+              <h5 class="card-title">{{pedido.cliente.nombreCliente}}</h5>
+              <h5 class="card-subtitle mb-2">{{pedido.producto.nombreRestaurante}}</h5>
+              <p class="card-text">{{pedido.producto.nombreProducto}}</p>
+              <h6 class="card-subtitle mb-2 text-muted">Monto: L. {{pedido.monto}}.00</h6>
+              <div class="text-left">
+                <button class="btn btn-primary mx-0" [ngClass]="{'d-none': idPedido}" (click)="entregarPedido(pedido._id)">Entregar Pedido</button>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
-    <div class="card my-3">
+    <!-- <div class="card my-3">
       <div class="card-body">
         <h5 class="card-title">Rafael Bautista</h5>
         <h6 class="card-subtitle mb-3 text-muted">Col. La Esperanza, Tegucigalpa</h6>
@@ -20,7 +28,7 @@
         <h6 class="card-subtitle mb-2 text-muted">Monto: L. 145.00</h6>
         <a href="#" class="card-link">Entregar Pedido</a>
       </div>
-  </div>
+  </div> -->
 </main>
 
 <app-footbar></app-footbar>

@@ -1,18 +1,11 @@
 <app-navbar></app-navbar>
 
 <main class="container">
-    <div class="card my-3">
+    <div class="card my-3" *ngFor="let pedido of pedidos">
         <div class="card-body">
-          <h5 class="card-title">Cliente: Rafael Bautista</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Monto: L. 145.00</h6>
-          <h6 href="#" class="card-link">Pedido Entregado</h6>
-        </div>
-    </div>
-    <div class="card my-3">
-        <div class="card-body">
-          <h5 class="card-title">Cliente: Rafael Bautista</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Monto: L. 145.00</h6>
-          <h6 href="#" class="card-link">Pedido Cancelado</h6>
+          <h5 class="card-title">Cliente: {{pedido.cliente.nombreCliente}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Monto: L. {{pedido.monto}}.00</h6>
+          <h6 href="#" class="card-link">Estado: {{pedido.estado}}</h6>
         </div>
     </div>
 </main>
