@@ -21,3 +21,15 @@ input{
 label{
     margin-left: 10%;
 }
+
+.input-error{
+    border-color: red;
+}
+
+.d-block{
+    color: red;
+}
+
+small{
+    color:red
+}

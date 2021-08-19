@@ -13,12 +13,11 @@
                         <label class="my-1">Apellido:</label>
                         <input type="text" class="form-control" formControlName="apellido" placeholder="Apellido" required>
                         <label class="my-1">Correo Electronico:</label>
-                        <input type="email" class="form-control" formControlName="correo" placeholder="Correo" required>
+                        <input type="email" [ngClass]="{'input-error': correo.invalid && (correo.dirty || correo.touched)}" class="form-control" formControlName="correo" placeholder="Correo" required>
+                        <small class="d-none" [ngClass]="{'d-block': correo.invalid && (correo.dirty || correo.touched), 'd-none': correo.valid}" style="margin-left: 35px;">El Correo Electronico no es valido</small>
                         <label class="my-1">Contraseña:</label>
-                        <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
-                        <small style="margin-left: 35px;">La contraseña debe contener minimo 8 digitos</small>
-                        <!-- <label class="my-1">Repetir Contraseña:</label>
-                        <input type="password" class="form-control" placeholder="Volver a introducir contraseña"> -->
+                        <input type="password" [ngClass]="{'input-error': password.invalid && (password.dirty || password.touched)}" class="form-control" placeholder="Contraseña" formControlName="password" required>
+                        <small [ngClass]="{'d-block': password.invalid && (password.dirty || password.touched), 'd-none': password.valid}" style="margin-left: 35px;">La contraseña debe contener minimo 8 digitos</small>
                         <label class="my-1">Genero:</label>
                         <div class="form-check">
                             <input class="form-check-input" formControlName="genero" value="Masculino" type="radio" name="genero" id="genero">
@@ -35,11 +34,11 @@
                         <label class="my-1">Fecha de Nacimiento:</label>
                         <input type="date" class="form-control" formControlName="fechaNacimiento" required>
                         <label class="my-1">Teléfono:</label>
-                        <input type="text" class="form-control" placeholder="XXXX-XXXX" formControlName="telefono" pattern="[0-9]{4}-[0-9]{4}" required>
-                        <small style="margin-left: 35px;">Utilizar el formato mostrado XXXX-XXXX</small>
+                        <input type="text" class="form-control" [ngClass]="{'input-error': telefono.invalid && (telefono.dirty || telefono.touched)}" placeholder="XXXX-XXXX" formControlName="telefono" pattern="[0-9]{4}-[0-9]{4}" required>
+                        <small [ngClass]="{'d-block': telefono.invalid && (telefono.dirty || telefono.touched), 'd-none': telefono.valid}" style="margin-left: 35px;">Utilizar el formato mostrado XXXX-XXXX</small>
                         <label class="my-1">No. de Identidad:</label>
-                        <input type="text" class="form-control" placeholder="XXXX-XXXX-XXXXX" formControlName="identidad" pattern="[0-9]{4}-[0-9]{4}-[0-9]{5}" required>
-                        <small style="margin-left: 35px;">Utilizar el formato mostrado XXXX-XXXX-XXXXX</small>
+                        <input type="text" class="form-control" [ngClass]="{'input-error': identidad.invalid && (identidad.dirty || identidad.touched)}" placeholder="XXXX-XXXX-XXXXX" formControlName="identidad" pattern="[0-9]{4}-[0-9]{4}-[0-9]{5}" required>
+                        <small [ngClass]="{'d-block': identidad.invalid && (identidad.dirty || identidad.touched), 'd-none': identidad.valid}" style="margin-left: 35px;">Utilizar el formato mostrado XXXX-XXXX-XXXXX</small>
                     </form>
                     <span style="margin: 0 auto; font-size: 0.8rem;">¿Ya tiene una cuenta? <a routerLink='/'>Inicia Sesión Ahora!</a></span>
                     <button class="btn btn-primary my-4" style="width: 80%; margin: 0 auto;" (click)="guardarNuevoMotorista()">Registrarse</button>
