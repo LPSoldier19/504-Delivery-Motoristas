@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import {faUtensils, faCheckCircle, faBan, faMotorcycle, faClipboardCheck} from '@fortawesome/free-solid-svg-icons';
 import { Loader } from '@googlemaps/js-api-loader';
 import { PedidosService } from 'src/app/services/pedidos.service';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./entrega.component.css']
 })
 
-export class EntregaComponent implements OnInit {
+export class EntregaComponent implements OnInit, AfterViewInit {
 
   idPedido:any = localStorage.getItem('idPedido');
   pedido:any = {};
@@ -24,8 +24,8 @@ export class EntregaComponent implements OnInit {
   faMotorcicle = faMotorcycle;
   faClipboardCheck = faClipboardCheck
 
-  lat:number = 0;
-  lng:number = 0;
+  lat:number = this.direccion.lat;
+  lng:number = this.direccion.lng;
 
 
   private map!: google.maps.Map;
@@ -44,11 +44,12 @@ export class EntregaComponent implements OnInit {
         console.log(error);
       }
     )
+  }
 
-
+  ngAfterViewInit(){
     let loader = new Loader({
       apiKey: 'AIzaSyBtnSxMdTk70gFZB7XE1KAMK7Pd4je5HlU'
-    })
+    });
 
 
     loader.load().then(() => {
@@ -61,15 +62,13 @@ export class EntregaComponent implements OnInit {
         gestureHandling: "greedy"
       })
 
+
       const marker = new google.maps.Marker({
         position: location,
         map: this.map
       });
-    });
-
-
+    })
   }
-
   enRestaurante(){
     this.pedidosService.enRestaurante(this.idPedido).subscribe(
       res=>{
